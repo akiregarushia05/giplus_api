@@ -1,0 +1,144 @@
+{% extends './base.html' %}
+
+{% block title %} Terceros {% endblock %}
+
+{% block body %}
+<h2>Agregar  Terceros</h2>
+
+
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+      <form action="/tercero" method = "POST">
+          <div class="form-group row">
+               <label for="tipoIdentificacionFK" class="col-sm-2 col-form-label">Tipo de Identificacion</label>
+               <div class="col-sm-10">
+                   <input type="number" id="tipoIdentificacionFK" name="tipoIdentificacionFK">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="numIdentificacion" class="col-sm-2 col-form-label">N° de Identificacion</label>
+               <div class="col-sm-10">
+                   <input type="number" id="numIdentificacion" name="numIdentificacion">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="nombres" class="col-sm-2 col-form-label">Nombres</label>
+               <div class="col-sm-10">
+                   <input type="text" id="nombres" name="nombres">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
+               <div class="col-sm-10">
+                   <input type="text" id="apellidos" name="apellidos">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+               <div class="col-sm-10">
+                   <input type="text" id="telefono" name="telefono">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="celular" class="col-sm-2 col-form-label">Celular</label>
+               <div class="col-sm-10">
+                   <input type="text" id="celular" name="celular">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+               <div class="col-sm-10">
+                   <input type="email" id="email" name="email">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+               <div class="col-sm-10">
+                   <input type="text" id="ciudad" name="ciudad">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="departamento" class="col-sm-2 col-form-label">Departamento/Provincia</label>
+               <div class="col-sm-10">
+                   <input type="text" id="departamento" name="departamento">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+               <div class="col-sm-10">
+                   <input type="text" id="direccion" name="direccion">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="tipoUsuarioFK" class="col-sm-2 col-form-label">Tipo de Usuario</label>
+               <div class="col-sm-10">
+                   <input type="number" id="tipoUsuarioFK" name="tipoUsuarioFK">
+               </div>
+          </div>
+          <div class="form-group row">
+               <label for="claveUsuario" class="col-sm-2 col-form-label">Clave de Usuario</label>
+               <div class="col-sm-10">
+                   <input type="password" id="claveUsuario" name="claveUsuario">
+               </div>
+          </div>
+       <p><input type = "submit" value = "Agregar" /></p>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+<h2>Terceros</h2>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Tipo de Identificacion</td>
+                        <td>N° de Identificacion</td>
+                        <td>Nombres</td>
+                        <td>Apellidos</td>
+                        <td>Telefono</td>
+                        <td>Celular</td>
+                        <td>E-mail</td>
+                        <td>Ciudad</td>
+                        <td>Provincia</td>
+                        <td>Direccion</td>
+                        <td>Tipo de Usuario</td>
+                        <td>Clave de Usuario</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tercero in data %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{pelicula[1]}}</td>
+                        <td>{{pelicula[2]}}</td>
+                        <td>{{pelicula[3]}}</td>
+                        <td>{{pelicula[4]}}</td>
+                        <td>{{pelicula[5]}}</td>
+                        <td>{{pelicula[6]}}</td>
+                        <td>{{pelicula[7]}}</td>
+                        <td>{{pelicula[8]}}</td>
+                        <td>{{pelicula[9]}}</td>
+                        <td>{{pelicula[10]}}</td>
+                        <td>{{pelicula[11]}}</td>
+                        <td>{{pelicula[12]}}</td>
+                        <td>
+                            <form method="POST" action="./eliminarTercero" style="display: inline">
+                              <input type="hidden" value="{{pelicula[2]}}" name="numIdentificacion">
+                              <input type="submit" value="Eliminar">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
